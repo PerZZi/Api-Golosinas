@@ -1,4 +1,4 @@
-package Api.Golosinas.demo.config;
+/*package Api.Golosinas.demo.config;
 
 import Api.Golosinas.demo.Repositories.UsuarioRepository;
 import Api.Golosinas.demo.entidades.Usuario;
@@ -40,4 +40,4 @@ public class WebAuthentication extends GlobalAuthenticationConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
-}
+}*/

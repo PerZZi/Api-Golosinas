@@ -1,20 +1,20 @@
-package Api.Golosinas.demo.config;
-
-import Api.Golosinas.demo.config.JWT.JwtAuthenticationFilter;
-import Api.Golosinas.demo.config.JWT.JwtService;
+/*package Api.Golosinas.demo.config;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -26,7 +26,7 @@ public class SecurityConfig{
         http
                 .authorizeHttpRequests(auth -> auth
                         // Endpoints permitidos para todos
-                        .requestMatchers("/my-project/src/componentes/Login.jsx").permitAll()
+                        .requestMatchers("/my-project/index.html").permitAll()
                         .requestMatchers(HttpMethod.POST, "/login").permitAll()
                         .requestMatchers(HttpMethod.GET, "/pedidos/todos").permitAll()
                         .requestMatchers(HttpMethod.POST, "/pedidos/crear").permitAll()
@@ -51,7 +51,7 @@ public class SecurityConfig{
                 exceptionHandlingConfigurer.authenticationEntryPoint((request, response, authException) -> response.sendError(403)));
 
         http.formLogin(formLogin -> formLogin
-                .loginPage("/my-project/src/componentes/Login.jsx") // Página de inicio de sesión
+                .loginPage("/my-project/index.html") // Página de inicio de sesión
                 .loginProcessingUrl("/login") // URL para procesamiento de inicio de sesión
                 .usernameParameter("email") // Parámetro para el nombre de usuario
                 .passwordParameter("password") // Parámetro para la contraseña
@@ -82,6 +82,17 @@ public class SecurityConfig{
     }
 
 
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173/", "http://localhost:3000"));
+        configuration.setAllowedMethods(Arrays.asList("GET","POST", "PUT", "DELETE"));
+        configuration.setAllowedHeaders(List.of("*"));
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
+
     private void clearAuthenticationAttributes(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null) {
@@ -89,5 +100,5 @@ public class SecurityConfig{
         }
     }
 
-}
+}*/
 
