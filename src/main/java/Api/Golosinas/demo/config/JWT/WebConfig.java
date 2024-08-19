@@ -38,7 +38,7 @@ public class WebConfig {
 
                 .authorizeHttpRequests(authorize -> // request  se encarga de especificar el método http autorizar y su ruta
                         authorize
-                                .requestMatchers("/my-project/index.html").permitAll()
+                                .requestMatchers("/my-project/**").permitAll()
                                 .requestMatchers( "/login").permitAll()
                                 .requestMatchers( "/pedidos/todos").permitAll()
                                 .requestMatchers( "/pedidos/crear").permitAll()
